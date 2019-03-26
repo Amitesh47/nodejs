@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src = 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js'></script>
+    <script>
+        var worker;
+        if(Modernizr.webworkers){
+            alert('it supports');
+        }
+        else{
+            alert('Not supported');
+        }
+       function verifyWebWorker(){
+           worker = new Worker('loop.js');
+           worker.onmessage = function(data){
+               alert(data.data);
+           }
+           for(var x = 10; x<100; x++){
+               console.log(x);
+           }
+       } 
+        </script>
+</head>
+<body>
+    <button onclick="verifyWebWorker()">Click Me</button>
+</body>
+</html>
